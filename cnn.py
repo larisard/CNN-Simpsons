@@ -57,7 +57,8 @@ imagensTreinamento = geradorTreinamento.flow_from_directory(f'{arquivoTemp.name}
 imagensTeste = geradorTeste.flow_from_directory(f'{arquivoTemp.name}/dataset_personagens/test_set', target_size = (48,48),
                                                             batch_size = 32, class_mode = 'binary')
 
-redeNeural.fit(imagensTreinamento, epochs = 5, batch_size = 32, validation = imagensTeste)
+redeNeural.fit_generator(imagensTreinamento, steps_per_epoch = 196, epochs = 100,
+                         validation_data = imagensTeste, validation_steps = 73)
 
 
      
